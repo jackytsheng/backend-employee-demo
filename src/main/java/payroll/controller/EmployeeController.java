@@ -1,10 +1,14 @@
-package payroll;
+package payroll.controller;
 
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import payroll.services.Employee;
+import payroll.exception.EmployeeNotFoundException;
+import payroll.repository.EmployeeRepository;
+import payroll.services.EmployeeResourceAssembler;
 
 import java.net.URISyntaxException;
 import java.util.List;
@@ -25,7 +29,7 @@ public class EmployeeController {
   }
 
   @GetMapping("employees")
-  CollectionModel<EntityModel<Employee>> all() {
+  public CollectionModel<EntityModel<Employee>> all() {
 
     List<EntityModel<Employee>> employees = repository.findAll().stream().map(assembler::toModel)
         .collect(Collectors.toList());
@@ -41,7 +45,7 @@ public class EmployeeController {
   }
 
   @GetMapping("employees/{id}")
-  EntityModel<Employee> one(@PathVariable Long id) {
+  public EntityModel<Employee> one(@PathVariable Long id) {
     Employee employee = repository.findById(id).orElseThrow(() -> new EmployeeNotFoundException(id));
 
     return assembler.toModel(employee);

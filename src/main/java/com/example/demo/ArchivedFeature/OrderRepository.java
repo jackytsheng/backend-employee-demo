@@ -1,4 +1,4 @@
-package payroll;
+package com.example.demo.ArchivedFeature;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

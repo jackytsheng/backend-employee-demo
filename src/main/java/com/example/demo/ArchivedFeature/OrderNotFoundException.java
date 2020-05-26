@@ -1,4 +1,4 @@
-package payroll;
+package com.example.demo.ArchivedFeature;
 
 public class OrderNotFoundException extends RuntimeException{
   OrderNotFoundException(Long id){

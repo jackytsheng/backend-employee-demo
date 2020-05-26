@@ -1,4 +1,4 @@
-package payroll;
+package com.example.demo.ArchivedFeature;
 
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
