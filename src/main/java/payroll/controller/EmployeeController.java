@@ -36,8 +36,7 @@ public class EmployeeController {
       return new CollectionModel<>(employees,
           linkTo(methodOn(EmployeeController.class).all()).withSelfRel());
   }
-
-
+  
   @PostMapping("employees")
   ResponseEntity<?> newEmployee(@RequestBody Employee newEmployee) throws URISyntaxException{
     EntityModel<Employee> entityModel = assembler.toModel(repository.save(newEmployee));
