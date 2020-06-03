@@ -1,4 +1,4 @@
-package payroll.util;
+package payroll.services.util;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -31,7 +31,7 @@ public class JwtUtil {
     return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
   }
   private Boolean isTokenExpired(String token){
-    return extractExpiration(token).before(new Date());
+    return extractExpiration(token).before(new Date(System.currentTimeMillis()));
   }
   public String generateToken(UserDetails userDetails){
     Map<String,Object> claims = new HashMap<>();

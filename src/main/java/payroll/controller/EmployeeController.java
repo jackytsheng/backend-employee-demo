@@ -5,9 +5,9 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import payroll.services.Employee;
 import payroll.exception.EmployeeNotFoundException;
 import payroll.repository.EmployeeRepository;
+import payroll.services.Employee;
 import payroll.services.EmployeeResourceAssembler;
 
 import java.net.URISyntaxException;
@@ -36,7 +36,8 @@ public class EmployeeController {
       return new CollectionModel<>(employees,
           linkTo(methodOn(EmployeeController.class).all()).withSelfRel());
   }
-  
+
+
   @PostMapping("employees")
   ResponseEntity<?> newEmployee(@RequestBody Employee newEmployee) throws URISyntaxException{
     EntityModel<Employee> entityModel = assembler.toModel(repository.save(newEmployee));
